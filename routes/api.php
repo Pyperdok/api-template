@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\CommonController;
+use App\Http\Controllers\Auth\AuthController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/register', [CommonController::class, 'register']);
+Route::get('/register', [AuthController::class, 'register']);
