@@ -25,6 +25,6 @@ class Password
 
     public function getValue(): string
     {
-        return bcrypt($this->password);
+        return $this->password;
     }
 }

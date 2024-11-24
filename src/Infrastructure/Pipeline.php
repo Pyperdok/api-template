@@ -6,9 +6,9 @@ use Src\Domain\Shared\Result;
 
 class Pipeline
 {
-    public static function execute(array $steps, Result $initialResult): Result
+    public static function execute(array $steps, ?Result $initialResult = null): Result
     {
-        $currentResult = $initialResult;
+        $currentResult = is_null($initialResult) ? Result::success() : $initialResult;
 
         foreach ($steps as $step) {
             $currentResult = $step($currentResult);

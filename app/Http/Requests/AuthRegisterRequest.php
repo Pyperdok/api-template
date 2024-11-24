@@ -24,24 +24,22 @@ class AuthRegisterRequest extends FormRequest
     protected function passedValidation(): void
     {
         $email = $this->input('email');
+        $password = $this->input('password');
 
         if (is_null($email)) {
             $this->handleError(new Error(EmailError::Required));
         }
 
-        $emailResult = Email::create($email);
-
-        if (!$emailResult->isSuccess()) {
-            $this->handleError($emailResult);
-        }
-
-        $password = $this->input('password');
-
         if (is_null($password)) {
             $this->handleError(new Error(PasswordError::Required));
         }
 
+        $emailResult = Email::create($email);
         $passwordResult = Password::create($password);
+
+        if (!$emailResult->isSuccess()) {
+            $this->handleError($emailResult);
+        }
 
         if (!$passwordResult->isSuccess()) {
             $this->handleError($passwordResult);

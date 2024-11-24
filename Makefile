@@ -16,7 +16,7 @@ up-db:
 up-app:
 	docker run -d --rm --name laravel \
 	-p 8000:8000 \
-	--env DB_HOST=mariadb \
+	--env DB_HOST=127.0.0.1 \
 	--env DB_PORT=3306 \
 	--env DB_USERNAME=bn_myapp \
 	--env DB_DATABASE=bitnami_myapp \
